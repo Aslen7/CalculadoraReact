@@ -16,7 +16,9 @@ export default function App() {
 
   const handleCalculate = () => {
     try {
-      setResult(eval(input).toString());
+      // Replace 'x' with '*' for multiplication and '÷' with '/' for division
+      const expression = input.replace(/x/g, '*').replace(/÷/g, '/');
+      setResult(eval(expression).toString());
     } catch (error) {
       setResult('Error');
     }
@@ -74,9 +76,9 @@ export default function App() {
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => handleNumberClick(Math.PI.toString())}
+          onPress={() => handleNumberClick('÷')}
         >
-          <Text>π</Text>
+          <Text>÷</Text>
         </TouchableHighlight>
       </View>
       <View style={styles.buttonRow}>
@@ -126,9 +128,9 @@ export default function App() {
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => handleNumberClick('/')}
+          onPress={() => handleNumberClick('x')}
         >
-          <Text>/</Text>
+          <Text>x</Text>
         </TouchableHighlight>
       </View>
       <View style={styles.buttonRow}>
@@ -232,15 +234,15 @@ export default function App() {
       <View style={styles.buttonRow}>
         <TouchableHighlight
           style={styles.button}
-          onPress={() => handleNumberClick('%')}
-        >
-          <Text>%</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
           onPress={() => handleNumberClick(')')}
         >
           <Text>)</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => handleNumberClick('π')}
+        >
+          <Text>π</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
